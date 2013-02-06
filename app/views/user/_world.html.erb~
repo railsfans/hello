@@ -1,0 +1,8 @@
+<div id="getvalue">getvalue</div>
+<script>
+$("#getvalue").click(function(){
+var hello=$("#datepicker").val();
+alert(hello);
+})
+</script>
+

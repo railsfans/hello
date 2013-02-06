@@ -1,0 +1,88 @@
+<table>
+	<tr>
+                <th>  
+                        Number
+                </th>
+		<th>
+			Title
+		</th>
+		<th>
+			Content
+		</th>
+                <th>
+			Status
+		</th>
+		<th></th>
+		<th></th>
+		<th></th>
+	</tr>
+	<% @posts_active.each_with_index do |post, i| %>
+		<tr>
+                        <td>    <%= i+1 %>
+                        </td>
+			<td>
+				<%= post.title %>
+			</td>
+			<td>
+				<%= post.content %>
+			</td>
+                        <td>
+				<%= post.status %>
+			</td>
+			<td>
+				<%= link_to 'Edit', edit_post_path(post), remote: true %>
+			</td>
+			<td>
+				<%= link_to 'Destroy', post, confirm: 'Are you sure?', 
+					method: :delete, remote: true %>
+			</td>
+                        <td>
+                                <%= link_to 'active',  unactive_post_path(post), :remote=>true %>
+                        </td>
+		</tr>
+	<% end %>
+</table>
+<table>
+	<tr>
+                <th>  
+                        Number
+                </th>
+		<th>
+			Title
+		</th>
+		<th>
+			Content
+		</th>
+                <th>
+			Status
+		</th>
+		<th></th>
+		<th></th>
+		<th></th>
+	</tr>
+	<% @posts_unactive.each_with_index do |post, i| %>
+		<tr>
+                        <td>    <%= i+1 %>
+                        </td>
+			<td>
+				<%= post.title %>
+			</td>
+			<td>
+				<%= post.content %>
+			</td>
+                        <td>
+				<%= post.status %>
+			</td>
+			<td>
+				<%= link_to 'Edit', edit_post_path(post), remote: true %>
+			</td>
+			<td>
+				<%= link_to 'Destroy', post, confirm: 'Are you sure?', 
+					method: :delete, remote: true %>
+			</td>
+                        <td>
+                                <%= link_to 'unactive',  active_post_path(post), :remote=>true %>
+                        </td>
+		</tr>
+	<% end %>
+</table>

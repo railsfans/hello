@@ -1,0 +1,6 @@
+$("#post_errors").hide(300);
+$("#flash_notice").html("<%= j(flash[:notice]) %>");
+$("#flash_notice").show(300);
+$("#post_number").html("<%= pluralize(Post.count,'post') %>")
+$("#post_number").show(300);
+$("#posts_list").html("<%= j(render 'posts') %>");

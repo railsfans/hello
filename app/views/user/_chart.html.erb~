@@ -1,0 +1,66 @@
+ 
+<div id="container1"  ></div>
+
+<div id="test">getJson</div>
+<script>
+$("#test").click(function(){
+ $(function() {  
+   var chart = new Highcharts.Chart({  
+     chart: {  
+       renderTo: 'container1',  
+       defaultSeriesType: 'area'  
+     },  
+     legend: {  
+       enabled: true,  
+       align: 'right',  
+       backgroundColor: '#FCFFC5',  
+       borderColor: 'black',  
+       borderWidth: 2,  
+       layout: 'vertical',  
+       verticalAlign: 'top',  
+       y: 100,  
+       shadow: true  
+     },  
+     rangeSelector: {  
+       selected: 1  
+     },  
+     series: []  
+   });  
+   $("#container").queue("chartQueue",  
+     function(next) {  
+       chart.showLoading("ADBE");  
+       chart.addSeries(  
+       {  
+         name: 'ADBE',  
+         marker: {  
+           enabled: false  
+         },  
+         data: ADBE  
+       });  
+       setTimeout(function() {  
+         chart.hideLoading();  
+       }, 3000);  
+       next();  
+     });  
+   $("#container").delay(3000, "chartQueue");  
+   $("#container").queue("chartQueue",  
+     function(next) {  
+       chart.showLoading("MSFT");  
+       chart.addSeries(  
+       {  
+         name: 'MSFT',  
+         marker: {  
+           enabled: false  
+         },  
+         data: MSFT  
+       });  
+       setTimeout(function() {  
+         chart.hideLoading();  
+       }, 3000);  
+       next();  
+     });  
+   $("#container").delay(3000, "chartQueue");  
+     $("#container").dequeue("chartQueue");  
+ });
+});
+</script>

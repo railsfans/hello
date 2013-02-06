@@ -1,0 +1,94 @@
+
+  <style type="text/css" media="screen">
+  
+ 
+  </style>
+
+
+<div id="header">
+<strong>HEADER</strong>
+<a href="#">Link Item 1</a>
+<a href="#">Link Item 2</a>
+<a href="#">Link Item 3</a>
+ 
+</div>
+<li><form class="navbar-form pull-left"><input type="text" >
+<button type="submit" class="btn">Submit</button></form></li>
+</ul>
+</div>
+</div>
+</div>
+
+<div id="sidebar">
+<p><strong>SIDEBAR</strong></p>
+<ul>
+<li><a href="#">Link Item 1</a></li>
+<li><a href="#">Link Item 2</a></li>
+<li><a href="#">Link Item 3</a></li>
+<li><a href="#">Link Item 4</a></li>
+</ul>
+</div>
+
+
+   
+
+
+
+
+<div id="content">
+<p><strong>CONTENT</strong>This is a test. This is a test. This is a test. This is a test.
+This is a test. This is a test. This is a test. This is a test. This is a test.
+This is a test. This is a test. This is a test. This is a test. This is a test.
+This is a test. This is a test. This is a test. This is a test. This is a test.
+
+</p>
+<div id="container1" ></div>
+
+<div id="test">getJson</div>
+<script>
+$("#test").click(function(){
+ $(function() {  
+    var chart = new Highcharts.Chart({
+        chart: {
+            renderTo: 'container1'
+        },
+        
+        xAxis: {
+        },
+        
+        series: [{
+            data: [29.9, 71.5, 106.4, 129.2, 144.0, 176.0, 135.6, 148.5, 216.4, 194.1, 95.6, 54.4]        
+        }, {
+            data: [129.2, 144.0, 176.0, 135.6, 148.5, 216.4, 194.1, 95.6, 54.4, 29.9, 71.5, 106.4]        
+        }]
+    });
+    
+    
+    // the button action
+    $button = $('#button');
+    $button.click(function() {
+        var series = chart.series[0];
+        if (series.visible) {
+            series.hide();
+            $button.html('Show series');
+        } else {
+            series.show();
+            $button.html('Hide series');
+        }
+    });
+    
+ });
+$("p").css("display","none");
+});
+</script>
+<p>This is a test. This is a test. This is a test. This is a test.
+This is a test. This is a test. This is a test. This is a test. This is a test.
+This is a test. This is a test. This is a test. This is a test. This is a test.
+This is a test. This is a test. This is a test. This is a test. This is a test. This is a test.
+This is a test. This is a test. This is a test. This is a test. This is a test.
+</p>
+</div>
+
+<div id="footer">
+<strong>FOOTER</strong>
+</div>

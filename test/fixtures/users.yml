@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  name: MyString
+  student_number: MyString
+  academy: MyString
+  gender: false
+
+two:
+  name: MyString
+  student_number: MyString
+  academy: MyString
+  gender: false
