@@ -1,5 +1,5 @@
-source 'https://rubygems.org'
-
+#source 'https://rubygems.org'
+source 'http://ruby.taobao.org/'
 gem 'rails', '3.2.9'
 gem 'therubyracer'
 gem 'execjs'
@@ -7,8 +7,10 @@ gem 'execjs'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 gem "simple_form"
 gem 'sqlite3'
-
-
+gem 'will_paginate'
+gem "galetahub-simple_captcha", :require => "simple_captcha"
+gem 'rmagick', '2.13.2'
+ 
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do

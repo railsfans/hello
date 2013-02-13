@@ -2,11 +2,18 @@ class ProductsController < ApplicationController
   # GET /products
   # GET /products.json
   def index
-    @products = Product.all
-
+    if simple_captcha_valid?
+    "ok"
+    else
+    "fail"
+     end
+    sleep 2
+    @products=Product.all
+    @posts = Post.paginate(:page=>params[:page], :per_page=>6) 
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @products }
+      format.js
     end
   end
 

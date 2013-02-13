@@ -1,3 +1,6 @@
+<% @matchpost.each do |f| %>
+<%= f.title %><br >
+<% end %>
 <table>
 	<tr>
                 <th>  
@@ -11,6 +14,12 @@
 		</th>
                 <th>
 			Status
+		</th>
+                <th>
+                        Created_at
+                </th>
+                 <th>
+			Day
 		</th>
 		<th></th>
 		<th></th>
@@ -28,6 +37,12 @@
 			</td>
                         <td>
 				<%= post.status %>
+			</td>
+                          <td>
+				<%= post.created_at.strftime("%Y-%m-%d") %>
+			</td>
+                           <td>
+				<%= Post::DAYS[post.created_at.wday] %>
 			</td>
 			<td>
 				<%= link_to 'Edit', edit_post_path(post), remote: true %>
@@ -56,6 +71,9 @@
                 <th>
 			Status
 		</th>
+                 <th>
+			Day
+		</th>
 		<th></th>
 		<th></th>
 		<th></th>
@@ -72,6 +90,9 @@
 			</td>
                         <td>
 				<%= post.status %>
+			</td>
+                          <td>
+				<%= Post::DAYS[post.created_at.wday] %>
 			</td>
 			<td>
 				<%= link_to 'Edit', edit_post_path(post), remote: true %>

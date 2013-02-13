@@ -15,7 +15,30 @@
 //= require highchart/highcharts.js
 //= require highchart/exporting.js
 //= require_tree . 
+$(function(){
 
+  $("#ajax th a, .pagination a").live("click", function(){
+   /*
+   $.getScript(this.href);
+   */
+   $.get(this.href, null, null, "script")
+    return false;
+}); 
+  /* 
+  $("#ajax_search ").submit(
+ function(){
+ $.get(this.action, $(this).serialize(),  null, "script");
+ return false;
+});
+  */
+  
+  $("#ajax_search input").keyup(
+ function(){
+ $.get($("ajax_search").attr("action"), $("ajax_search").serialize(),  null, "script");
+ return false;
+});
+   
+})
  
  
 

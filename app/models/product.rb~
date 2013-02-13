@@ -1,6 +1,12 @@
 class Product < ActiveRecord::Base
   attr_accessible :name
   validates_presence_of :name
-  validates :name, :length => { :within => 3..12}
-
+  validates :name, :length => { :within => 1..2}
+  def self.search(search)
+  if search
+  where('name like ?', "%#{search}%")
+  else
+  all
+  end
+  end
 end

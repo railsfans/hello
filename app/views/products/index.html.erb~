@@ -51,14 +51,30 @@
   </tr>
 <% end %>
 </table>
-
+<%= show_simple_captcha(:label => "human authentication") %>
+<%= form_tag products_path, :method=>'get' do %>
+<%= text_field_tag :search, params[:search] %>
+<%= submit_tag "search", :name=>nil %>
+<% end %>
+<%= simple_form_for @products do |f| %>
+<%= f.input :name %>
+<%= f.submit %>
+<% end %>
+<div id="products">
+<%= render "products" %>
+</div>
 <br />
 
 <%= link_to 'New Product', new_product_path %>
 <div id="test">getJson</div>
 <script>
 $("#test").click(function(){
- 
+$.getJSON("http://localhost:3000/products",function(data){
+$.each(data,function(index,p){
+var html="<tr><td>"+p.name +"</td></tr>";
+$("#test").append(html);
+});
+});
 alert("hello");
 });
 </script>

@@ -1,7 +1,7 @@
 class PostsController < ApplicationController
  before_filter :load
   
-  def unactive
+  def active
   @post=Post.find(params[:id])
   if @post.update_attributes(status: true)
    flash[:notice] = "Successfully active post."
@@ -10,7 +10,7 @@ class PostsController < ApplicationController
   end
   end
   
-  def active
+  def unactive
   @post=Post.find(params[:id])
   if @post.update_attributes(status: false)
    flash[:notice] = "Successfully unactive post."
@@ -21,8 +21,9 @@ class PostsController < ApplicationController
 
   def load
     @posts_unactive = Post.find_all_by_status(false)
-    @posts_active=Post.find_all_by_status(true)
+    @posts_active=Post.where(:status=>true).paginate(:page=>params[:page], :per_page=>5)
     @post = Post.new
+    @matchpost=Post.where("Date(created_at)=?", Date.new(2013,2,6))
   end
 
   def index

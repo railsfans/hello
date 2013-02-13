@@ -1,11 +1,12 @@
 Hello::Application.routes.draw do
-  #get "user/index"
+  get "search/index", :as=>"search"
+
+  get "user/index", :as=>"user"
   match "posts/:id/active"=>"posts#active", :as=>"active_post"
    match "posts/:id/unactive"=>"posts#unactive", :as=>"unactive_post"
   resources :user
   resources :posts
-
-
+  
   resources :products
 
 

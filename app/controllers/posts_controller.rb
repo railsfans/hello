@@ -21,8 +21,9 @@ class PostsController < ApplicationController
 
   def load
     @posts_unactive = Post.find_all_by_status(false)
-    @posts_active=Post.find_all_by_status(true)
+    @posts_active=Post.where(:status=>true) 
     @post = Post.new
+    @matchpost=Post.where("Date(created_at)=?", Date.new(2013,2,6))
   end
 
   def index

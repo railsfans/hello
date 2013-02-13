@@ -2,7 +2,11 @@
 <script>
 $("#getvalue").click(function(){
 var hello=$("#datepicker").val();
+hello=hello.replace(///gi,',');
+if(hello)
 alert(hello);
+else
+alert("please enter a date")
 })
 </script>
 

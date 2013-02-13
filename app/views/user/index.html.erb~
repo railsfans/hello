@@ -69,7 +69,7 @@
  
 	});
 	</script>
-        <div>Date: <input type="text" id="datepicker"></div>
+        <p>Date: <input type="text" id="datepicker"></p>
         <%= render "world" %>
         <%= image_tag ("calendar.gif") %>
 	</div>
@@ -110,6 +110,16 @@
 
 <div class="demo-description">
 <p>Click tabs to swap between content that is broken into logical sections.</p>
+<%= form_tag user_path, :method=>'get', :id=>"ajax_search" do %>
+<%= text_field_tag :search, params[:search] %>
+<%= submit_tag "search", :name=>nil %>
+<div id="ajax">
+<%= render "ajax" %>
+</div>
+<% end %>
+
+
+<%= will_paginate @posts %>
 <div id="world">world</div>
 <script>
 $("#world").click(function(){

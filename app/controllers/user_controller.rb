@@ -1,5 +1,7 @@
 class UserController < ApplicationController
+  helper_method :sort_column, :sort_direction
   def index
+  @posts=Post.order(sort_column + " " + sort_direction).search(params[:search]).paginate(:per_page=> 5, :page=>params[:page])
   @user=User.first
   end
   def show
@@ -12,5 +14,14 @@ class UserController < ApplicationController
   def destroy
   end
   def new
+  end
+  private
+  def sort_column
+  # params[:sort] || "id"
+  Post.column_names.include?(params[:sort]) ? params[:sort] : "id"
+  end
+  def sort_direction
+  # params[:direction] || "asc"
+  %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
   end
 end

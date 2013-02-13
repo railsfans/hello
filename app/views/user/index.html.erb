@@ -110,6 +110,13 @@
 
 <div class="demo-description">
 <p>Click tabs to swap between content that is broken into logical sections.</p>
+<%= form_tag user_path, :method=>'get', :id=>"ajax_search" do %>
+<%= text_field_tag :search, params[:search] %>
+<%= submit_tag "search", :name=>nil %>
+<div id="ajax">
+<%= render "ajax" %>
+</div>
+<% end %>
 <div id="world">world</div>
 <script>
 $("#world").click(function(){
