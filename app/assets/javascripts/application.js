@@ -24,20 +24,20 @@ $(function(){
    $.get(this.href, null, null, "script")
     return false;
 }); 
-  /* 
+  
   $("#ajax_search ").submit(
  function(){
  $.get(this.action, $(this).serialize(),  null, "script");
  return false;
 });
-  */
   
+  /*
   $("#ajax_search input").keyup(
  function(){
  $.get($("ajax_search").attr("action"), $("ajax_search").serialize(),  null, "script");
  return false;
 });
-   
+  */ 
 })
  
  

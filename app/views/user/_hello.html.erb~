@@ -18,10 +18,8 @@
 		var name = $( "#name" ),
 			email = $( "#email" ),
 			password = $( "#password" ),
-                        name1=$("#name1")
-                        email1 = $( "#email1" ),
-			password1 = $( "#password1" ),
-			allFields = $( [] ).add( name ).add( email ).add( password ).add(name1).add( email1 ).add( password1 ),
+                        
+			allFields = $( [] ).add( name ).add( email ).add( password ),
 			tips = $( ".validateTips" );
 
 		function updateTips( t ) {
@@ -56,8 +54,8 @@
 
 		$( "#dialog-form" ).dialog({
 			autoOpen: false,
-			height: 600,
-			width: 700,
+			height: 400,
+			width: 500,
 			modal: true,
 			buttons: {
 				"Create an account": function() {
@@ -77,6 +75,8 @@
                                                 var Name= name.val();
 						$.ajax({
 						  type    : 'PUT',
+
+beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
 						  url     : "http://localhost:3000/products/1", 
 						  data    : { product : { name : Name  } },
 						  success : function(data) {
@@ -85,7 +85,7 @@
 							"<td>" + email.val() + "</td>" + 
 							"<td>" + password.val() + "</td>" +
 						"</tr>" ); 
-						       $( this ).dialog( "close" );  
+						      $( "#dialog-form" ).dialog( "close" );  
 							    },  
 						}); 
 					}
@@ -119,12 +119,7 @@
 		<input type="text" name="email" id="email" value="" class="text ui-widget-content ui-corner-all" />
 		<label for="password">Password</label>
 		<input type="password" name="password" id="password" value="" class="text ui-widget-content ui-corner-all" />
-                <label for="name">Name</label>
-		<input type="text" name="name" id="name1" class="text ui-widget-content ui-corner-all" />
-                <label for="email">Email1</label>
-		<input type="text" name="email" id="email1" value="" class="text ui-widget-content ui-corner-all" />
-		<label for="password">Password1</label>
-		<input type="password" name="password" id="password1" value="" class="text ui-widget-content ui-corner-all" />
+               
 	</fieldset>
 	</form>
 </div>
@@ -147,20 +142,7 @@
 				<td>johndoe1</td>
 			</tr>
 		</tbody>
-                <thead>
-			<tr class="ui-widget-header ">
-				<th>Name</th>
-				<th>Email</th>
-				<th>Password</th>
-			</tr>
-		</thead>
-		<tbody class="test2">
-			<tr>
-				<td>John Doe</td>
-				<td>john.doe@example.com</td>
-				<td>johndoe1</td>
-			</tr>
-		</tbody>
+                 
 	</table>
 </div>
 <button id="create-user">Create new user</button>

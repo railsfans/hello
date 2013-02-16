@@ -14,7 +14,17 @@ Hello::Application.configure do
   config.action_controller.perform_caching = false
 
   # Don't care if the mailer can't send
-  config.action_mailer.raise_delivery_errors = false
+  # Email configuration 
+	config.action_mailer.raise_delivery_errors = true 
+	# Gmail SMTP server setup 
+	ActionMailer::Base.smtp_settings = { 
+	:address => "smtp.gmail.com", 
+	:enable_starttls_auto => true, 
+	:port => 587, 
+	:authentication => :plain, 
+	:user_name => "yangxiangxiao@gmail.com", 
+	:password => '200828362' 
+	} 
 
   # Print deprecation notices to the Rails logger
   config.active_support.deprecation = :log
