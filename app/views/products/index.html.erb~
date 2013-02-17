@@ -52,10 +52,7 @@
 <% end %>
 </table>
 <%= show_simple_captcha(:label => "human authentication") %>
-<%= form_tag products_path, :method=>'get' do %>
-<%= text_field_tag :search, params[:search] %>
-<%= submit_tag "search", :name=>nil %>
-<% end %>
+
 <%= simple_form_for @products do |f| %>
 <%= f.input :name %>
 <%= f.submit %>

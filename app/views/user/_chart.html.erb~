@@ -1,66 +1,67 @@
  
-<div id="container1"  ></div>
-
+<div id="container1"></div>
+ 
 <div id="test">getJson</div>
 <script>
 $("#test").click(function(){
- $(function() {  
-   var chart = new Highcharts.Chart({  
-     chart: {  
-       renderTo: 'container1',  
-       defaultSeriesType: 'area'  
-     },  
-     legend: {  
-       enabled: true,  
-       align: 'right',  
-       backgroundColor: '#FCFFC5',  
-       borderColor: 'black',  
-       borderWidth: 2,  
-       layout: 'vertical',  
-       verticalAlign: 'top',  
-       y: 100,  
-       shadow: true  
-     },  
-     rangeSelector: {  
-       selected: 1  
-     },  
-     series: []  
-   });  
-   $("#container").queue("chartQueue",  
-     function(next) {  
-       chart.showLoading("ADBE");  
-       chart.addSeries(  
-       {  
-         name: 'ADBE',  
-         marker: {  
-           enabled: false  
-         },  
-         data: ADBE  
-       });  
-       setTimeout(function() {  
-         chart.hideLoading();  
-       }, 3000);  
-       next();  
-     });  
-   $("#container").delay(3000, "chartQueue");  
-   $("#container").queue("chartQueue",  
-     function(next) {  
-       chart.showLoading("MSFT");  
-       chart.addSeries(  
-       {  
-         name: 'MSFT',  
-         marker: {  
-           enabled: false  
-         },  
-         data: MSFT  
-       });  
-       setTimeout(function() {  
-         chart.hideLoading();  
-       }, 3000);  
-       next();  
-     });  
-   $("#container").delay(3000, "chartQueue");  
-     $("#container").dequeue("chartQueue");  
- });
+$.getJSON("products", function(data){
+       var Data=[];
+   $.each( data.where(:name=>"hello"), function(key, value){
+        Data.push(value.price);
+       });
+   $(function(){
+   var chart = new Highcharts.Chart({
+     chart: {
+            renderTo: 'container1' 
+            },  
+     xAxis: {
+          //  type: 'datetime'
+        },
+     series: [{
+        //     pointInterval: <%= 1.day * 1000 %>,
+        //     pointStart: <%= 3.weeks.ago.to_i * 1000 %>,
+             data: Data 
+              }]
+     }); 
+     })  
+   console.log(Data);
+   console.log(data)
+  })
 });
+/*
+$(function() {  
+    var chart = new Highcharts.Chart({
+        chart: {
+            renderTo: 'container1'
+        },
+        
+        xAxis: {
+        },
+        
+        series: [{
+            data: [29.9, 71.5, 106.4, 129.2, 144.0, 176.0, 135.6, 148.5, 216.4, 194.1, 95.6, 54.4]        
+        }, {
+            data: [129.2, 144.0, 176.0, 135.6, 148.5, 216.4, 194.1, 95.6, 54.4, 29.9, 71.5, 106.4]        
+        }]
+    });
+    
+    
+    // the button action
+    $button = $('#button');
+    $button.click(function() {
+        var series = chart.series[0];
+        if (series.visible) {
+            series.hide();
+            $button.html('Show series');
+        } else {
+            series.show();
+            $button.html('Hide series');
+        }
+    });
+    
+ });
+
+// $("p").css("display","none");
+});
+*/
 </script>

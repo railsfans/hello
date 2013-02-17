@@ -52,11 +52,6 @@
 <% end %>
 </table>
 <%= show_simple_captcha(:label => "human authentication") %>
-
-<%= simple_form_for @products do |f| %>
-<%= f.input :name %>
-<%= f.submit %>
-<% end %>
 <div id="products">
 <%= render "products" %>
 </div>
