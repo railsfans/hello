@@ -1,4 +1,6 @@
 Hello::Application.routes.draw do
+  devise_for :doors
+
   get "search/index", :as=>"search"
 
   get "user/index", :as=>"user"
@@ -8,7 +10,7 @@ Hello::Application.routes.draw do
   resources :posts
   
   resources :products
-
+  
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

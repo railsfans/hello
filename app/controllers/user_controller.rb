@@ -1,4 +1,5 @@
 class UserController < ApplicationController
+  before_filter :authenticate_door!
   helper_method :sort_column, :sort_direction
   def index
   @posts=Post.order(sort_column + " " + sort_direction).search(params[:search]).paginate(:per_page=> 5, :page=>params[:page])

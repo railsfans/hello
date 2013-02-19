@@ -1,6 +1,5 @@
 <script>
 	$(function() {
-                
 		 $( "#tabs1" ).tabs({
 		beforeLoad: function( event, ui ) {
 		ui.jqXHR.error(function() {
@@ -27,6 +26,7 @@
 		<li><a href="#tabs-21">我的运动</a></li>
 		<li><a href="#tabs-31">我的成绩</a></li>
                 <li><a href="products.html">Tab 1</a></li>
+                <li><%= link_to "sign_out", destroy_door_session_path, :method=>:get  %></li>
 	</ul>
 	<div id="tabs-11">
 		<div id="tabs">

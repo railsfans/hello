@@ -11,7 +11,9 @@
  *= require_self
  *= require_tree .
  */
-
+.error {
+     color: red;
+     }
 body {
     font-family: verdana, sans-serif;
     font-size: 12px;

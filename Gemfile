@@ -3,6 +3,7 @@ source 'http://ruby.taobao.org/'
 gem 'rails', '3.2.9'
 gem 'therubyracer'
 gem 'execjs'
+gem 'devise'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 gem "simple_form"

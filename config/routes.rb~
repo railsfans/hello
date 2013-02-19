@@ -1,14 +1,16 @@
 Hello::Application.routes.draw do
+  devise_for :doors
+
   get "search/index", :as=>"search"
 
   get "user/index", :as=>"user"
   match "posts/:id/active"=>"posts#active", :as=>"active_post"
    match "posts/:id/unactive"=>"posts#unactive", :as=>"unactive_post"
-  #resources :user
+  resources :user
   resources :posts
   
   resources :products
-
+  root :to=>'home#index'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
@@ -59,7 +61,7 @@ Hello::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-   root :to => 'user#index'
+  # root :to => 'user#index'
 
   # See how all your routes lay out with "rake routes"
 
