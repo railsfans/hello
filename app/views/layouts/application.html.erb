@@ -17,15 +17,9 @@
 </head>
 <body>
    <div id="container">
-          <div id="user_nav">    
-      <% if door_signed_in? %>    
-        Signed in as <%= current_door.email %>. Not you?    
-        <%= link_to "Sign out", destroy_door_session_path %>    
-      <% else %>    
-        <%= link_to "Sign up", new_door_registration_path %> or    
-        <%= link_to "Sign in", new_door_session_path %>    
-      <% end %>    
-    </div>   
+        
+        
+       
       <p class="notice"><%=notice%></p>
       <p class="alert"><%=alert%></p>
    <div id="flash_notice" style="display:none"></div> 

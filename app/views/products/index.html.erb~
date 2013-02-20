@@ -51,12 +51,11 @@
   </tr>
 <% end %>
 </table>
-<%= show_simple_captcha(:label => "human authentication") %>
-
-<%= simple_form_for @products do |f| %>
-<%= f.input :name %>
-<%= f.submit %>
-<% end %>
+<div id="simple_captcha">
+<%= render "simple_captcha" %>
+</div>
+<%= link_to "refresh picture", refresh_path, :remote=>true %>
+<%= link_to (image_tag "rails"), "#", :class=>"refresh_image" %>
 <div id="products">
 <%= render "products" %>
 </div>

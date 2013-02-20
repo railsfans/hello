@@ -1,12 +1,13 @@
 class ProductsController < ApplicationController
+  def refresh
+  render :layout=>false
+  respond_to do |format|
+  format.js
+  end
+  end
   # GET /products
   # GET /products.json
   def index
-    if simple_captcha_valid?
-    "ok"
-    else
-    "fail"
-     end
     sleep 2
     @products=Product.all   
 #   @products= Product.where(:name=>"hello")

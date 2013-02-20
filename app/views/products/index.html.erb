@@ -51,7 +51,10 @@
   </tr>
 <% end %>
 </table>
-<%= show_simple_captcha(:label => "human authentication") %>
+<div id="simple_captcha">
+<%= render "simple_captcha" %>
+</div>
+<%= link_to "refresh picture", refresh_path, :remote=>true %>
 <div id="products">
 <%= render "products" %>
 </div>

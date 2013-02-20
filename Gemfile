@@ -11,7 +11,7 @@ gem 'sqlite3'
 gem 'will_paginate'
 gem "galetahub-simple_captcha", :require => "simple_captcha"
 gem 'rmagick', '2.13.2'
- 
+#gem 'easy_captcha' 
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do

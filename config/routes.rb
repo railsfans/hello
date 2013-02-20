@@ -1,6 +1,19 @@
 Hello::Application.routes.draw do
-  devise_for :doors
 
+  resources :captchas
+  # get "/doors/sign_in" => "session#new"
+  # post "/doors/sign_in"    => "session#create"
+  # get "/doors/sign_out" => "session#destroy"
+   get "session/new" =>"session#new"
+   post "session/create" =>"session#create"
+   get "session/destroy" => "session#destroy"
+ 
+   devise_for :doors, :controllers=>{ :session =>'session'}, :skip=>[:sessions] do
+  get '/doors/sign_in' => 'session#new', :as => :new_door_session
+post '/doors/sign_in' => 'session#create', :as => :door_session
+get '/doors/sign_out' => 'session#destroy', :as => :destroy_door_session
+end
+  
   get "search/index", :as=>"search"
 
   get "user/index", :as=>"user"
@@ -10,7 +23,7 @@ Hello::Application.routes.draw do
   resources :posts
   
   resources :products
-  
+  match "products#refresh"=>"products#refresh", :as=>"refresh"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
