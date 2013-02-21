@@ -7,8 +7,8 @@ Hello::Application.routes.draw do
    get "session/new" =>"session#new"
    post "session/create" =>"session#create"
    get "session/destroy" => "session#destroy"
-   devise_for :doors, :controllers=>{ :session=>'my_devise/sessions'}
    
+    devise_for :doors, :controller=>{registrations: 'registrations'}
   
   get "search/index", :as=>"search"
 

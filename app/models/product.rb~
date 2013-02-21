@@ -13,8 +13,10 @@ class Product < ActiveRecord::Base
   def self.total_on(date)
   where("date(created_at) = ?", date).sum(:price)
   end
-  def self.between_with(startTime, endTime)
-  where(['created_at >= ? and created_at <?', startTime, endTime])
-  end
+  
+#  def self.between_with(startTime, endTime)
+#  where(['created_at >= ? and created_at <?', startTime, endTime])
+#  end
+  
   belongs_to :user
 end

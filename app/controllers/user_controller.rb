@@ -4,7 +4,7 @@ class UserController < ApplicationController
   def index
   
   @posts=Post.order(sort_column + " " + sort_direction).search(params[:search]).paginate(:per_page=> 5, :page=>params[:page])
-  @user=User.first 
+  @user=current_door.user
    
   respond_to  do |format|
   format.html

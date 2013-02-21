@@ -7,11 +7,13 @@ Hello::Application.routes.draw do
    get "session/new" =>"session#new"
    post "session/create" =>"session#create"
    get "session/destroy" => "session#destroy"
- 
-   devise_for :doors, :controllers=>{ :session =>'session'}, :skip=>[:sessions] do
+   
+   devise_for :doors, :controllers=>{ :session =>'session'}, :skip=>[:sessions, :registration] do
   get '/doors/sign_in' => 'session#new', :as => :new_door_session
 post '/doors/sign_in' => 'session#create', :as => :door_session
 get '/doors/sign_out' => 'session#destroy', :as => :destroy_door_session
+  get 'doors/edit' => 'session#edit', :as=> 'edit_door_registration'
+  put 'doors' => 'session#update_password', :as=>'door_registration'
 end
   
   get "search/index", :as=>"search"

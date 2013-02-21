@@ -30,7 +30,7 @@ $(function(){
  $.get(this.action, $(this).serialize(),  null, "script");
  return false;
 });
-  
+ 
   /*
   $("#ajax_search input").keyup(
  function(){

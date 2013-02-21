@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130219135031) do
+ActiveRecord::Schema.define(:version => 20130220131658) do
 
   create_table "captchas", :force => true do |t|
     t.string   "name"
@@ -72,6 +72,7 @@ ActiveRecord::Schema.define(:version => 20130219135031) do
     t.date     "born_on"
     t.integer  "product_id"
     t.integer  "rating"
+    t.integer  "door_id"
   end
 
 end
