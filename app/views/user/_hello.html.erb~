@@ -77,6 +77,9 @@
 						  type    : 'PUT',
 
 beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
+/*
+WARNING: Can't verify CSRF token authenticity
+*/
 						  url     : "http://localhost:3000/products/1", 
 						  data    : { product : { name : Name  } },
 						  success : function(data) {

@@ -12,18 +12,22 @@ Hello::Application.routes.draw do
   get '/doors/sign_in' => 'session#new', :as => :new_door_session
 post '/doors/sign_in' => 'session#create', :as => :door_session
 get '/doors/sign_out' => 'session#destroy', :as => :destroy_door_session
-  get 'doors/edit' => 'session#edit', :as=> 'edit_door_registration'
+  post 'doors/edit' => 'session#edit', :as=> 'edit_door_registration'
   put 'doors' => 'session#update_password', :as=>'door_registration'
 end
   
   get "search/index", :as=>"search"
 
   get "user/index", :as=>"user"
+  match "chengji/:id/active"=>"user#active", :as=>"active_user"
+   match "user/begin"=>"user#begin", :as=>"user_begin"
   match "posts/:id/active"=>"posts#active", :as=>"active_post"
    match "posts/:id/unactive"=>"posts#unactive", :as=>"unactive_post"
-  resources :user
+ 
   resources :posts
-  
+  get "user/chart"
+  match "user#chart"=>"user#chart", :as=>"chart_user"
+   resources :user
   resources :products
   match "products#refresh"=>"products#refresh", :as=>"refresh"
 

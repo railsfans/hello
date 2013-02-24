@@ -11,12 +11,23 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130220131658) do
+ActiveRecord::Schema.define(:version => 20130224081904) do
 
   create_table "captchas", :force => true do |t|
     t.string   "name"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+  end
+
+  create_table "chengjis", :force => true do |t|
+    t.decimal  "distance"
+    t.integer  "spendTime"
+    t.decimal  "effectDistance"
+    t.datetime "created_at",                        :null => false
+    t.datetime "updated_at",                        :null => false
+    t.integer  "user_id"
+    t.boolean  "status",         :default => false
+    t.boolean  "status1",        :default => false
   end
 
   create_table "doors", :force => true do |t|
@@ -73,6 +84,9 @@ ActiveRecord::Schema.define(:version => 20130220131658) do
     t.integer  "product_id"
     t.integer  "rating"
     t.integer  "door_id"
+    t.string   "campus"
+    t.string   "major"
+    t.integer  "integration"
   end
 
 end

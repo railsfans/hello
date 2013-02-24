@@ -4,7 +4,7 @@ class Post < ActiveRecord::Base
   DAYS=['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
   def self.search(search)
   if search
-  where('created_at like ?', "%#{search}%")
+  where('title like ?', "%#{search}%")
   else
   # all
   scoped

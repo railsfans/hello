@@ -17,7 +17,8 @@
 		$( "#tabs3 li" ).removeClass( "ui-corner-top" ).addClass( "ui-corner-left" );
                 $( "#tabs11" ).tabs().addClass( "ui-tabs-vertical ui-helper-clearfix" );
 		$( "#tabs11 li" ).removeClass( "ui-corner-top" ).addClass( "ui-corner-left" );
-
+                $( "#tabs31" ).tabs().addClass( "ui-tabs-vertical ui-helper-clearfix" );
+		$( "#tabs31 li" ).removeClass( "ui-corner-top" ).addClass( "ui-corner-left" );
 
 	});
 	</script>
@@ -63,8 +64,8 @@
 	<div id="tabs-3">
 		<h2>Content heading 3</h2>
 		<div id="editPassword">
+                <%= render "session/editpassword" %>
                 </div>
-                <%= link_to "edit password", edit_door_registration_path, :remote=>true %> 
 		<p>Duis cursus. Maecenas ligula eros, blandit nec, pharetra at, semper at, magna. Nullam ac lacus. Nulla facilisi. Praesent viverra justo vitae neque. Praesent blandit adipiscing velit. Suspendisse potenti. Donec mattis, pede vel pharetra blandit, magna ligula faucibus eros, id euismod lacus dolor eget odio. Nam scelerisque. Donec non libero sed nulla mattis commodo. Ut sagittis. Donec nisi lectus, feugiat porttitor, tempor ac, tempor vitae, pede. Aenean vehicula velit eu tellus interdum rutrum. Maecenas commodo. Pellentesque nec elit. Fusce in lacus. Vivamus a libero vitae lectus hendrerit hendrerit.</p>
         <script>
 	$(function() {
@@ -90,17 +91,22 @@
 	<div id="tabs-21">
 	<div id="tabs3">
 	<ul>
-		<li><a href="#tabs-21">Nunc tincidunt</a></li>
-		<li><a href="#tabs-22">Proin dolor</a></li>
-		<li><a href="#tabs-23">Aenean lacinia</a></li>
+		<li><a href="#tabs-21">未确认运动</a></li>
+		<li><a href="#tabs-22">已确认运动</a></li>
+		<li><a href="#tabs-23">运动申诉</a></li>
 	</ul>
 	<div id="tabs-21">
 		<h2>Content heading 1</h2>
-		<p>Proin elit arcu, rutrum commodo, vehicula tempus, commodo a, risus. Curabitur nec arcu. Donec sollicitudin mi sit amet mauris. Nam elementum quam ullamcorper ante. Etiam aliquet massa et lorem. Mauris dapibus lacus auctor risus. Aenean tempor ullamcorper leo. Vivamus sed magna quis ligula eleifend adipiscing. Duis orci. Aliquam sodales tortor vitae ipsum. Aliquam nulla. Duis aliquam molestie erat. Ut et mauris vel pede varius sollicitudin. Sed ut dolor nec orci tincidunt interdum. Phasellus ipsum. Nunc tristique tempus lectus.</p>
+	<div id="chengjiunactive">
+        <%= render "chengjiunactive" %>
+        </div>
 	</div>
 	<div id="tabs-22">
-		<h2>Content heading 2</h2>
-		<p>Morbi tincidunt, dui sit amet facilisis feugiat, odio metus gravida ante, ut pharetra massa metus id nunc. Duis scelerisque molestie turpis. Sed fringilla, massa eget luctus malesuada, metus eros molestie lectus, ut tempus eros massa ut dolor. Aenean aliquet fringilla sem. Suspendisse sed ligula in ligula suscipit aliquam. Praesent in eros vestibulum mi adipiscing adipiscing. Morbi facilisis. Curabitur ornare consequat nunc. Aenean vel metus. Ut posuere viverra nulla. Aliquam erat volutpat. Pellentesque convallis. Maecenas feugiat, tellus pellentesque pretium posuere, felis lorem euismod felis, eu ornare leo nisi vel felis. Mauris consectetur tortor et purus.</p>
+<div id="chengji" %>
+<%= render "chengji" %>
+</div>
+<br>
+<br>
         <%= form_tag user_path, :method=>'get', :id=>"ajax_search" do %>
 <%= text_field_tag :search, params[:search] %>
 <%= submit_tag "search", :name=>nil %>
@@ -111,15 +117,140 @@
 	</div>
 	<div id="tabs-23">
 		<h2>Content heading 3</h2>
-		<p>Mauris eleifend est et turpis. Duis id erat. Suspendisse potenti. Aliquam vulputate, pede vel vehicula accumsan, mi neque rutrum erat, eu congue orci lorem eget lorem. Vestibulum non ante. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Fusce sodales. Quisque eu urna vel enim commodo pellentesque. Praesent eu risus hendrerit ligula tempus pretium. Curabitur lorem enim, pretium nec, feugiat nec, luctus a, lacus.</p>
-		<p>Duis cursus. Maecenas ligula eros, blandit nec, pharetra at, semper at, magna. Nullam ac lacus. Nulla facilisi. Praesent viverra justo vitae neque. Praesent blandit adipiscing velit. Suspendisse potenti. Donec mattis, pede vel pharetra blandit, magna ligula faucibus eros, id euismod lacus dolor eget odio. Nam scelerisque. Donec non libero sed nulla mattis commodo. Ut sagittis. Donec nisi lectus, feugiat porttitor, tempor ac, tempor vitae, pede. Aenean vehicula velit eu tellus interdum rutrum. Maecenas commodo. Pellentesque nec elit. Fusce in lacus. Vivamus a libero vitae lectus hendrerit hendrerit.</p>
+	<script>
+	$(function() {
+		$( "#datepicker231, #datepicker232 " ).datepicker({
+			showOn: "button",
+			buttonImage: "<%= asset_path('calendar.gif') %>",
+                        dateFormat: "yy/mm/dd",
+			buttonImageOnly: true
+		});
+ 
+	});
+         
+	</script>	  
+        <p>申诉日期: <input type="text" id="datepicker231"></p>
+           <p>跑步日期: <input type="text" id="datepicker232"></p>
+       <%= link_to "begin", user_begin_path(:id=>current_door.user.id), :remote=>true %>
+
+        
+		<div id="appeal"></div>
 	</div>
 </div>	 
 
 	</div>
 	<div id="tabs-31">
-		<p>Mauris eleifend est et turpis. Duis id erat. Suspendisse potenti. Aliquam vulputate, pede vel vehicula accumsan, mi neque rutrum erat, eu congue orci lorem eget lorem. Vestibulum non ante. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Fusce sodales. Quisque eu urna vel enim commodo pellentesque. Praesent eu risus hendrerit ligula tempus pretium. Curabitur lorem enim, pretium nec, feugiat nec, luctus a, lacus.</p>
-		 
+         <div id="tabs31">
+	<ul>
+		<li><a href="#tabs-31">成绩查询</a></li>
+		<li><a href="#tabs-32">成绩排名</a></li>
+	</ul>
+                <div id="tabs-31">
+		<%= form_tag  url_for(:controller=>'user', :action=>'chart'), :method => 'get', :remote=>true, :id=>"ajax_date_search" do %>
+   <%= text_field_tag :search1, params[:startTime], :id => 'search_field1' %>
+    <%= text_field_tag :search2, params[:endTime], :id => 'search_field2' %>
+    <%= submit_tag "Search", :name=>nil %> 
+    <%= link_to_function "Clear", "$('#search_field1, #search_field2').val('')" %>
+ <% end %>
+ <span id="infotext"></span>
+ <div id="container31"></div>
+        <script>
+        $(function() {
+		$( "#search_field1, #search_field2" ).datepicker({
+			showOn: "button",
+			buttonImage: "<%= asset_path('calendar.gif') %>",
+                        dateFormat: "yy-mm-dd",
+			buttonImageOnly: true
+		});
+          $("#ajax_date_search, #product_search ").submit(
+ function(){
+   if(validateDate())
+//   $.get(this.action, $(this).serialize(),  null, "script");
+//   return false; 
+    { return true; }
+   else { return false; }
+	});
+   function validateDate() { 
+   if($("#search_field1").val() && $("#search_field2").val() && $("#search_field1").val() <= $("#search_field2").val())
+  {
+  $("#search_field1").removeClass("error");
+  $("#infotext").text('');
+  $("#infotext").removeClass("error");
+  return true;
+  }
+  else
+  { $("#search_field1").addClass("error");
+
+   $("#infotext").text("field cannot be empty!");
+
+   $("#infotext").addClass("error");
+    return false;
+  }
+   }
+});
+// console.log(<% @products %>);
+</script>
+	</div><div id="tabs-32">
+        <% @userorderintegration1.each_with_index do |user, i| %>
+	<% if user.id==current_door.user.id %>
+	<%  @number1=i %>
+	<% end %>
+	<% end %>
+   <% @userorderintegration2.each_with_index do |user, i| %>
+	<% if user.id==current_door.user.id %>
+	<%  @number2=i %>
+	<% end %>
+	<% end %>
+          <% @userorderdistance1.each_with_index do |user, i| %>
+	<% if user.id==current_door.user.id %>
+	<%  @number3=i %>
+	<% end %>
+	<% end %>
+         <% @userorderdistance2.each_with_index do |user, i| %>
+	<% if user.id==current_door.user.id %>
+	<%  @number4=i %>
+	<% end %>
+	<% end %>
+       <table class="pretty">
+	<tr>
+                <th>  
+                       排名方式
+                </th>
+		<th>
+			校区排名
+		</th>
+		<th>
+			学院排名
+		</th>
+                 
+	</tr>
+	
+		<tr>
+                           <td>
+				总积分
+			</td>
+                        <td>
+				<%= @number1+1 %>
+			</td>
+                        <td>
+                                <%= @number2+1 %>
+                        </td>
+		</tr>
+                <tr>
+                           <td>
+				总路程
+			</td>
+                        <td>
+				<%= @number3+1 %>
+			</td>
+                        <td>
+                                <%= @number4+1 %>
+                        </td>
+		</tr>
+               
+	
+       </table>
+       </div></div>	 
 	</div>
 </div>
 
