@@ -28,8 +28,8 @@
 		<li><a href="#tabs-11">个人信息</a></li>
 		<li><a href="#tabs-21">我的运动</a></li>
 		<li><a href="#tabs-31">我的成绩</a></li>
-                <li><a href="products.html">Tab 1</a></li>
-                <li><%= link_to "sign_out", destroy_door_session_path, :method=>:get  %></li>
+              
+                <li><%= link_to "退出系统", destroy_door_session_path, :method=>:get  %></li>
 	</ul>
 	<div id="tabs-11">
 		<div id="tabs">
@@ -51,9 +51,6 @@
         <div class="form_content_left">
         <%= render "form_content_left" %>
             </div>
-         <div>
-        <%= render "hello" %>
-        </div>
 	</div>
 	<div id="tabs-2">
 		<h2>Content heading 2</h2>
@@ -62,11 +59,9 @@
          
 	</div>
 	<div id="tabs-3">
-		<h2>Content heading 3</h2>
 		<div id="editPassword">
                 <%= render "session/editpassword" %>
                 </div>
-		<p>Duis cursus. Maecenas ligula eros, blandit nec, pharetra at, semper at, magna. Nullam ac lacus. Nulla facilisi. Praesent viverra justo vitae neque. Praesent blandit adipiscing velit. Suspendisse potenti. Donec mattis, pede vel pharetra blandit, magna ligula faucibus eros, id euismod lacus dolor eget odio. Nam scelerisque. Donec non libero sed nulla mattis commodo. Ut sagittis. Donec nisi lectus, feugiat porttitor, tempor ac, tempor vitae, pede. Aenean vehicula velit eu tellus interdum rutrum. Maecenas commodo. Pellentesque nec elit. Fusce in lacus. Vivamus a libero vitae lectus hendrerit hendrerit.</p>
         <script>
 	$(function() {
 		$( "#datepicker" ).datepicker({
@@ -78,14 +73,12 @@
  
 	});
 	</script>
-        <p>Date: <input type="text" id="datepicker"></p>
-        <%= render "world" %>
-        <%= image_tag ("calendar.gif") %>
+       
 	</div>
 </div>
 
 <div class="demo-description">
-<p>Click tabs to swap between content that is broken into logical sections.</p>
+
 </div>
 	</div>
 	<div id="tabs-21">
@@ -96,7 +89,7 @@
 		<li><a href="#tabs-23">运动申诉</a></li>
 	</ul>
 	<div id="tabs-21">
-		<h2>Content heading 1</h2>
+		 
 	<div id="chengjiunactive">
         <%= render "chengjiunactive" %>
         </div>
@@ -116,7 +109,7 @@
 <% end %>
 	</div>
 	<div id="tabs-23">
-		<h2>Content heading 3</h2>
+		 
 	<script>
 	$(function() {
 		$( "#datepicker231, #datepicker232 " ).datepicker({
@@ -131,7 +124,7 @@
 	</script>	  
         <p>申诉日期: <input type="text" id="datepicker231"></p>
            <p>跑步日期: <input type="text" id="datepicker232"></p>
-       <%= link_to "begin", user_begin_path(:id=>1), :remote=>true %>
+       <%= link_to "提交申诉", user_begin_path(:id=>current_door.user.id), :remote=>true %>
 
         
 		<div id="appeal"></div>
@@ -255,6 +248,6 @@
 </div>
 
 <div class="demo-description">
-<p>Click tabs to swap between content that is broken into logical sections.</p>
+
 
 </div>
